@@ -1,5 +1,6 @@
 package com.workshop.workshopmongo.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class PostService {
 		} catch (NoSuchElementException e) {
 			throw new ObjectNotFoundException("Objeto não encontrado");
 		}
+	}
+	
+	public List<Post> findByTitle(String text) {
+		return repo.findByTitleContainingIgnoreCase(text);
 	}
 }
